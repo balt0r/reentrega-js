@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Tienda - Mi Tienda</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Ruta relativa a la carpeta 'pages' -->
 </head>
 <body>
-    <div class="contenedor">
-        <button onclick="window.location.href='/index.html'" class="boton-volver-inicio">Volver al Inicio</button>
-        <h1>Productos</h1>
-        <div id="productos" class="productos"></div>
-
-        <h2>Carrito de Compras</h2>
-        <div id="carrito" class="carrito"></div>
-        <div id="total" class="total"></div>
-
-        <button id="vaciarCarrito" class="boton-vaciar">Vaciar Carrito</button>
+    <h1>Productos Disponibles</h1>
+    
+    <div id="productos">
+        <!-- Aquí se mostrarán los productos cargados desde el JSON -->
+    </div>
+    
+    <!-- Contador del carrito -->
+    <div id="contadorCarrito">
+        Productos en el carrito: <span id="cantidadProductos">0</span>
     </div>
 
-    <script src="carrito.js"></script>
+    <div id="total">
+        Total: $0
+    </div>
+
+    <button id="realizarCompra" class="boton-realizar-compra">Realizar Compra</button>
+    <button id="vaciarCarrito" class="boton-vaciar-carrito">Vaciar Carrito</button>
+
+    <button id="volverInicio" class="boton">Volver al Inicio</button>
+
+    <script src="carrito.js"></script> <!-- Ruta relativa a la carpeta 'pages' -->
+    <script>
+        document.getElementById('volverInicio').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
 </body>
 </html>
+

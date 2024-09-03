@@ -1,36 +1,3 @@
-const productos = [
-    {
-        "nombre": "aspiradora"
-    },
-    {
-        "nombre": "television"
-    }
-]
-
-const carrito = JSON.parse(localStorage.getItem("carrito"))??[]
-const guardarCarro = () => {localStorage.setItem("carrito", JSON.stringify(carrito))}
-
-
-const contenedorDeProductos = document.getElementById('contenedor-de-productos')
-
-productos.forEach((producto) => {
-    const div = document.createElement("div")
-    const titulo = document.createElement("h3")
-    titulo.innerText = producto.nombre
-    div.appendChild(titulo)
-    contenedorDeProductos.appendChild(div)
-    const agregarbtn = document.createElement("button")
-    agregarbtn.innerText = "Agregar al carro"
-    agregarbtn.addEventListener("click", () => {
-        const existe = carrito.find((item)=>{return item.nombre === producto.nombre})
-        if (! existe ){
-            carrito.push({nombre:producto.nombre, cantidad: 1}) 
-        }
-        else {existe.cantidad++} 
-        guardarCarro()
-    })
-    div.appendChild(agregarbtn)
-})
 
 document.getElementById('registro').style.display = 'none';
 document.getElementById('calculadora').style.display = 'none';
@@ -102,7 +69,6 @@ for (const boton of botones) {
     });
 }
 
-// Mostrar mensaje si ya hay usuario registrado
 window.onload = () => {
     const usuario = localStorage.getItem('usuario');
     if (usuario) {

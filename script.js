@@ -1,122 +1,54 @@
-document.getElementById('registro').style.display = 'none';
-document.getElementById('calculadora').style.display = 'none';
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-// Función para registrar usuario
-const registrarUsuario = () => {
     try {
-        const nombre = document.getElementById('nombre').value.trim();
-        const apellido = document.getElementById('apellido').value.trim();
-        if (nombre && apellido) {
-            const usuario = `${nombre} ${apellido}`;
-            localStorage.setItem('usuario', usuario);
-            document.getElementById('resultado').textContent = `Bienvenido ${usuario}`;
-            document.getElementById('nombre').value = '';
-            document.getElementById('apellido').value = '';
+        if (username === "admin" && password === "1234") {
+            document.getElementById('loginMessage').textContent = "Inicio de sesión exitoso!";
         } else {
-            throw new Error('Por favor, complete ambos campos.');
+            throw new Error("Usuario o contraseña incorrectos.");
         }
     } catch (error) {
-        document.getElementById('resultado').textContent = error.message;
+        document.getElementById('loginMessage').textContent = error.message;
     } finally {
-        console.log('Intento de registro completado');
-    }
-};
-
-// Función para realizar cálculos
-const realizarCalculo = () => {
-    try {
-        const numero1 = Number(document.getElementById('numero1').value);
-        const numero2 = Number(document.getElementById('numero2').value);
-        const operador = document.getElementById('operador').value;
-        let total;
-
-        if (isNaN(numero1) || isNaN(numero2)) {
-            throw new Error('Por favor, ingrese números válidos.');
-        }
-
-        switch (operador) {
-            case '1':
-                total = numero1 + numero2;
-                document.getElementById('resultado').textContent = `El resultado de la suma es: ${total}`;
-                break;
-            case '2':
-                total = numero1 - numero2;
-                document.getElementById('resultado').textContent = `El resultado de la resta es: ${total}`;
-                break;
-            case '3':
-                total = numero1 * numero2;
-                document.getElementById('resultado').textContent = `El resultado de la multiplicación es: ${total}`;
-                break;
-            case '4':
-                if (numero2 === 0) {
-                    throw new Error('No se puede dividir por cero.');
-                }
-                total = numero1 / numero2;
-                document.getElementById('resultado').textContent = `El resultado de la división es: ${total}`;
-                break;
-            default:
-                throw new Error('Operación no válida.');
-        }
-    } catch (error) {
-        document.getElementById('resultado').textContent = error.message;
-    } finally {
-        console.log('Intento de cálculo completado');
-    }
-};
-
-// Configuración de eventos
-document.getElementById('registrarse').addEventListener('click', () => {
-    try {
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('registro').style.display = 'block';
-    } catch (error) {
-        console.error(`Error al mostrar el registro: ${error.message}`);
+        console.log('Proceso de logeo finalizado.');
     }
 });
 
-document.getElementById('guardarUsuario').addEventListener('click', registrarUsuario);
+const pantalla = document.getElementById('pantalla');
+const botones = document.querySelectorAll('.btn');
+let operacion = '';
 
-document.getElementById('usarCalculadora').addEventListener('click', () => {
-    try {
-        document.getElementById('menu').style.display = 'none';
-        document.getElementById('calculadora').style.display = 'block';
-    } catch (error) {
-        console.error(`Error al mostrar la calculadora: ${error.message}`);
-    }
-});
-
-document.getElementById('calcular').addEventListener('click', realizarCalculo);
-
-const botones = document.getElementsByClassName('volver');
-
-for (const boton of botones) {
+botones.forEach(boton => {
     boton.addEventListener('click', () => {
+        const valor = boton.textContent;
         try {
-            document.getElementById('menu').style.display = 'block';
-            document.getElementById('registro').style.display = 'none';
-            document.getElementById('calculadora').style.display = 'none';
-            document.getElementById('resultado').textContent = 'Gracias por usar la aplicación.';
+            if (valor === '=') {
+                if (operacion === '') throw new Error('Operación vacía');
+                pantalla.value = eval(operacion);
+                operacion = pantalla.value;
+            } else if (valor === 'C') {
+                operacion = '';
+                pantalla.value = '';
+            } else {
+                operacion += valor;
+                pantalla.value = operacion;
+            }
         } catch (error) {
-            console.error(`Error al volver al menú: ${error.message}`);
+            pantalla.value = error.message;
+        } finally {
+            console.log('Operación calculada o limpiada.');
         }
     });
-}
+});
 
-window.onload = () => {
+document.getElementById('verTienda').addEventListener('click', () => {
     try {
-        const usuario = localStorage.getItem('usuario');
-        if (usuario) {
-            document.getElementById('resultado').textContent = `Bienvenido de nuevo ${usuario}`;
-        }
+        window.location.href = 'pages/tienda.html';
     } catch (error) {
-        console.error(`Error al cargar el usuario: ${error.message}`);
+        console.error("Error al intentar redirigir a la tienda: ", error);
     } finally {
-        console.log('Carga de la ventana completada');
+        console.log('Intento de redirigir a la tienda completado.');
     }
-};
-
-
-
-
-
-
+});

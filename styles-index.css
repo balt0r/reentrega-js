@@ -1,0 +1,114 @@
+/* Estilos generales para el index */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.index-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Estilos para el formulario de logeo */
+.login-container {
+    margin-bottom: 2rem;
+}
+
+.login-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container input {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-container .boton {
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container .boton:hover {
+    background-color: #218838;
+}
+
+/* Estilos para la calculadora */
+.calculadora-container {
+    margin-bottom: 2rem;
+}
+
+.calculadora {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+.calculadora input {
+    grid-column: span 4;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
+.teclado button {
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.teclado button:hover {
+    background-color: #0056b3;
+}
+
+#verTienda {
+    background-color: #17a2b8;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#verTienda:hover {
+    background-color: #138496;
+}

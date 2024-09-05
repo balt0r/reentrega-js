@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -28,7 +27,6 @@ button:hover {
     background-color: #218838;
 }
 
-/* Estilos para el index.html */
 .index-container {
     display: flex;
     flex-direction: column;
@@ -60,7 +58,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para tienda.html */
 #productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

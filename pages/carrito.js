@@ -11,10 +11,9 @@ function cargarProductos() {
         });
 }
 
-// Mostrar productos en la página
 function mostrarProductos(productos) {
     const contenedorProductos = document.getElementById('productos');
-    contenedorProductos.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+    contenedorProductos.innerHTML = ''; 
     productos.forEach((producto) => {
         const productoDiv = document.createElement('div');
         productoDiv.classList.add('producto');
@@ -27,7 +26,6 @@ function mostrarProductos(productos) {
         contenedorProductos.appendChild(productoDiv);
     });
 
-    // Agregar event listeners a los botones después de renderizar los productos
     const botonesAgregar = document.querySelectorAll('.boton-agregar');
     botonesAgregar.forEach(boton => {
         boton.addEventListener('click', (event) => {

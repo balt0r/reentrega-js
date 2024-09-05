@@ -1,5 +1,26 @@
 [
-    { "id": 1, "nombre": "Producto 1", "precio": 100 },
-    { "id": 2, "nombre": "Producto 2", "precio": 200 },
-    { "id": 3, "nombre": "Producto 3", "precio": 300 }
+    {
+        "id": 1,
+        "nombre": "Guitarra",
+        "precio": 100,
+        "imagen": "/images/guitarra.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Guitarra electrica",
+        "precio": 150,
+        "imagen": "/images/guitarra-electrica.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Bajo electrico",
+        "precio": 150,
+        "imagen": "/images/bajo.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Amplificador",
+        "precio": 200,
+        "imagen": "/images/amplificador.webp"
+    }
 ]

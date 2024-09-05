@@ -1,157 +1,148 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-}
-
-.container {
-    background: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-}
-
-button {
-    background-color: #007bff;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-input[type="text"], input[type="number"] {
-    padding: 10px;
-    width: calc(100% - 22px);
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-#resultado {
-    margin-top: 20px;
-    font-size: 18px;
     color: #333;
 }
 
-#registro, #calculadora {
-    display: none;
+h1 {
+    text-align: center;
+    color: #333;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.contenedor {
-    width: 80%;
-    max-width: 800px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.productos, .carrito {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.producto, .carrito-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: calc(33.333% - 20px);
-    border-radius: 5px;
-}
-
-.boton-agregar, .boton-vaciar, .boton-ir-tienda {
-    margin-top: 10px;
-    padding: 10px;
+button {
     background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Estilos para el index.html */
+.index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.index-container h1 {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.index-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.boton {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #007bff;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para tienda.html */
+#productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.producto {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.imagen-producto {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.producto h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.producto p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.boton-agregar {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.boton-agregar:hover {
+    background-color: #218838;
+}
+
+#contadorCarrito {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#total {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.boton-realizar-compra, .boton-vaciar-carrito {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
 }
 
-.boton-agregar:hover, .boton-vaciar:hover, .boton-ir-tienda:hover {
-    background-color: #218838;
+.boton-realizar-compra:hover, .boton-vaciar-carrito:hover {
+    background-color: #0056b3;
 }
 
-.total {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.contenedor {
-    width: 80%;
-    max-width: 800px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.productos, .carrito {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.producto, .carrito-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: calc(33.333% - 20px);
-    border-radius: 5px;
-}
-
-.boton-agregar, .boton-vaciar, .boton-ir-tienda, .boton-volver-inicio {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.boton-agregar:hover, .boton-vaciar:hover, .boton-ir-tienda:hover, .boton-volver-inicio:hover {
-    background-color: #218838;
-}
-
-.total {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
+@media (max-width: 768px) {
+    #productos {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
 }

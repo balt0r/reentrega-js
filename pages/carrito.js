@@ -1,11 +1,7 @@
-// Incluye SweetAlert2 desde un CDN en tu HTML, no uses import en el archivo JS si no usas módulos ES6
-// <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
 let carrito = [];
 
-// Función para cargar productos desde el archivo JSON
 function cargarProductos() {
-    fetch('/productos.json')
+    fetch('../productos.json')
         .then(response => response.json())
         .then(data => {
             mostrarProductos(data);
@@ -15,14 +11,15 @@ function cargarProductos() {
         });
 }
 
-// Función para mostrar productos en el DOM
+// Mostrar productos en la página
 function mostrarProductos(productos) {
     const contenedorProductos = document.getElementById('productos');
-    contenedorProductos.innerHTML = ''; 
+    contenedorProductos.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
     productos.forEach((producto) => {
         const productoDiv = document.createElement('div');
         productoDiv.classList.add('producto');
         productoDiv.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="imagen-producto">
             <h3>${producto.nombre}</h3>
             <p>Precio: $${producto.precio}</p>
             <button class="boton-agregar" data-id="${producto.id}">Agregar al Carrito</button>
@@ -30,6 +27,7 @@ function mostrarProductos(productos) {
         contenedorProductos.appendChild(productoDiv);
     });
 
+    // Agregar event listeners a los botones después de renderizar los productos
     const botonesAgregar = document.querySelectorAll('.boton-agregar');
     botonesAgregar.forEach(boton => {
         boton.addEventListener('click', (event) => {
@@ -39,13 +37,12 @@ function mostrarProductos(productos) {
     });
 }
 
-// Función para actualizar el contador del carrito
+
 function actualizarContadorCarrito() {
     const contadorCarrito = document.getElementById('cantidadProductos');
     contadorCarrito.innerText = carrito.length;
 }
 
-// Función para agregar un producto al carrito
 function agregarAlCarrito(idProducto, productos) {
     const producto = productos.find(p => p.id === idProducto);
     if (producto) {
@@ -69,14 +66,12 @@ function agregarAlCarrito(idProducto, productos) {
     }
 }
 
-// Función para calcular el total de la compra
 function calcularTotal() {
     const total = carrito.reduce((acum, producto) => acum + producto.precio, 0);
     const contenedorTotal = document.getElementById('total');
     contenedorTotal.innerHTML = `Total: $${total.toFixed(2)}`;
 }
 
-// Función para realizar la compra
 function realizarCompra() {
     if (carrito.length === 0) {
         Swal.fire({
@@ -100,18 +95,15 @@ function realizarCompra() {
     });
 }
 
-// Función para vaciar el carrito
 function vaciarCarrito() {
     carrito = [];
     actualizarContadorCarrito(); 
     calcularTotal(); 
 }
 
-// Asociar eventos a los botones
 document.getElementById('vaciarCarrito').addEventListener('click', vaciarCarrito);
 document.getElementById('realizarCompra').addEventListener('click', realizarCompra);
 
-// Inicializar el carrito al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
     actualizarContadorCarrito(); 
     cargarProductos();

@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda - Mi Tienda</title>
-    <link rel="stylesheet" href="../styles.css"> <!-- Ruta relativa a la carpeta 'pages' -->
+    <title>Carrito de Compras</title>
+    <!-- Incluir SweetAlert2 desde el CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <!-- Incluir tu archivo JavaScript -->
+    <script src="carrito.js" defer></script>
+    <link rel="stylesheet" href="../styles.css"> 
 </head>
 <body>
     <h1>Productos Disponibles</h1>
     
     <div id="productos">
-        <!-- Aquí se mostrarán los productos cargados desde el JSON -->
+
     </div>
     
-    <!-- Contador del carrito -->
     <div id="contadorCarrito">
         Productos en el carrito: <span id="cantidadProductos">0</span>
     </div>
@@ -26,8 +29,7 @@
     <button id="vaciarCarrito" class="boton-vaciar-carrito">Vaciar Carrito</button>
 
     <button id="volverInicio" class="boton">Volver al Inicio</button>
-
-    <script src="carrito.js"></script> <!-- Ruta relativa a la carpeta 'pages' -->
+     
     <script>
         document.getElementById('volverInicio').addEventListener('click', () => {
             window.location.href = '../index.html';

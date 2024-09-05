@@ -1,54 +1,75 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+document.addEventListener('DOMContentLoaded', (event) => {
+    const loginContainer = document.getElementById('loginContainer');
+    const calculadoraContainer = document.getElementById('calculadoraContainer');
+    const mostrarLogeoBtn = document.getElementById('mostrarLogeo');
+    const mostrarCalculadoraBtn = document.getElementById('mostrarCalculadora');
 
-    try {
-        if (username === "admin" && password === "1234") {
-            document.getElementById('loginMessage').textContent = "Inicio de sesión exitoso!";
-        } else {
-            throw new Error("Usuario o contraseña incorrectos.");
-        }
-    } catch (error) {
-        document.getElementById('loginMessage').textContent = error.message;
-    } finally {
-        console.log('Proceso de logeo finalizado.');
-    }
-});
+    mostrarLogeoBtn.addEventListener('click', () => {
+        loginContainer.classList.toggle('oculto');
+    });
 
-const pantalla = document.getElementById('pantalla');
-const botones = document.querySelectorAll('.btn');
-let operacion = '';
+    mostrarCalculadoraBtn.addEventListener('click', () => {
+        calculadoraContainer.classList.toggle('oculto');
+    });
 
-botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-        const valor = boton.textContent;
+    // Funcionalidad de Logeo
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
         try {
-            if (valor === '=') {
-                if (operacion === '') throw new Error('Operación vacía');
-                pantalla.value = eval(operacion);
-                operacion = pantalla.value;
-            } else if (valor === 'C') {
-                operacion = '';
-                pantalla.value = '';
+            if (username === "admin" && password === "1234") {
+                document.getElementById('loginMessage').textContent = "Inicio de sesión exitoso!";
             } else {
-                operacion += valor;
-                pantalla.value = operacion;
+                throw new Error("Usuario o contraseña incorrectos.");
             }
         } catch (error) {
-            pantalla.value = error.message;
+            document.getElementById('loginMessage').textContent = error.message;
         } finally {
-            console.log('Operación calculada o limpiada.');
+            console.log('Proceso de logeo finalizado.');
         }
+    });
+
+    // Funcionalidad de Calculadora
+    const pantalla = document.getElementById('pantalla');
+    const botones = document.querySelectorAll('.btn');
+    let operacion = '';
+
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const valor = boton.textContent;
+            try {
+                if (valor === '=') {
+                    if (operacion === '') throw new Error('Operación vacía');
+                    pantalla.value = eval(operacion);
+                    operacion = pantalla.value;
+                } else if (valor === 'C') {
+                    operacion = '';
+                    pantalla.value = '';
+                } else {
+                    operacion += valor;
+                    pantalla.value = operacion;
+                }
+            } catch (error) {
+                pantalla.value = error.message;
+            } finally {
+                console.log('Operación calculada o limpiada.');
+            }
+        });
     });
 });
 
-document.getElementById('verTienda').addEventListener('click', () => {
-    try {
-        window.location.href = 'pages/tienda.html';
-    } catch (error) {
-        console.error("Error al intentar redirigir a la tienda: ", error);
-    } finally {
-        console.log('Intento de redirigir a la tienda completado.');
+document.addEventListener('DOMContentLoaded', (event) => {
+    const verTiendaBtn = document.getElementById('verTienda');
+    
+    if (verTiendaBtn) {
+        verTiendaBtn.addEventListener('click', () => {
+            // Redireccionar a la página de la tienda
+            window.location.href = 'pages/tienda.html'; // Ajusta la ruta si es necesario
+        });
+    } else {
+        console.error('El botón para ver la tienda no se encontró.');
     }
 });
+

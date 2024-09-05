@@ -1,104 +1,117 @@
-/* Estilos generales para el index */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f4f4f4;
 }
 
 .index-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
     text-align: center;
+    margin-top: 50px;
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    color: #333;
 }
 
 p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.2em;
+    color: #555;
 }
 
-/* Estilos para el formulario de logeo */
-.login-container {
-    margin-bottom: 2rem;
-}
-
-.login-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.login-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.login-container input {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    width: 80%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.login-container .boton {
-    background-color: #28a745;
+.boton {
+    background-color: #3498db;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
-.login-container .boton:hover {
-    background-color: #218838;
+.boton:hover {
+    background-color: #2980b9;
+}
+
+.botones-container {
+    margin-bottom: 20px;
+}
+
+.login-container, .calculadora-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
 }
 
 /* Estilos para la calculadora */
 .calculadora-container {
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .calculadora {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    justify-items: center;
+    background-color: #f4f4f4;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
 }
 
-.calculadora input {
-    grid-column: span 4;
-    padding: 1rem;
-    font-size: 1.5rem;
+#pantalla {
+    width: 100%;
+    height: 50px;
     text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 5px;
 }
 
-.teclado button {
-    padding: 1rem;
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.boton-calculadora {
+    padding: 15px;
     font-size: 1.2rem;
-    background-color: #007bff;
-    color: white;
+    background-color: #4CAF50;
     border: none;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.teclado button:hover {
-    background-color: #0056b3;
+.boton-calculadora:hover {
+    background-color: #45a049;
 }
+
+
+.oculto {
+    display: none;
+}
+
+/*#pantalla {
+    grid-column: span 4;
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: right;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 10px;
+}*/
+
 
 #verTienda {
     background-color: #17a2b8;

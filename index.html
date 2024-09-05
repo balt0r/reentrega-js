@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Mi Tienda</title>
     <link rel="stylesheet" href="styles-index.css"> <!-- Archivo CSS específico para index.html -->
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="index-container">
         <h1>Bienvenido a Mi Tienda</h1>
-        <p>Explora nuestra amplia gama de productos de alta calidad.</p>
+        <p>Explora nuestra amplia gama de instrumentos de calidad.</p>
 
-        <!-- Sección de Logeo -->
-        <div class="login-container">
+        <!-- Botones para mostrar logeo y calculadora -->
+        <div class="botones-container">
+            <button id="mostrarLogeo" class="boton">Mostrar Logeo</button>
+            <button id="mostrarCalculadora" class="boton">Mostrar Calculadora</button>
+        </div>
+
+        <!-- Sección de Logeo (oculta al principio) -->
+        <div id="loginContainer" class="login-container oculto">
             <h2>Iniciar Sesión</h2>
             <form id="loginForm">
                 <label for="username">Usuario:</label>
@@ -24,8 +31,8 @@
             <p id="loginMessage"></p>
         </div>
 
-        <!-- Sección de Calculadora -->
-        <div class="calculadora-container">
+        <!-- Sección de Calculadora (oculta al principio) -->
+        <div id="calculadoraContainer" class="calculadora-container oculto">
             <h2>Calculadora</h2>
             <div class="calculadora">
                 <input type="text" id="pantalla" readonly>
@@ -56,6 +63,5 @@
     </div>
 
     <!-- Archivo JavaScript externo -->
-    <script src="script.js"></script>
 </body>
 </html>

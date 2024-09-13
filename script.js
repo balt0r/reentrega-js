@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         calculadoraContainer.classList.toggle('oculto');
     });
 
-    // Funcionalidad de Logeo
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
         const username = document.getElementById('username').value;
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    // Funcionalidad de Calculadora
     const pantalla = document.getElementById('pantalla');
     const botones = document.querySelectorAll('.btn');
     let operacion = '';
@@ -65,11 +63,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     if (verTiendaBtn) {
         verTiendaBtn.addEventListener('click', () => {
-            // Redireccionar a la página de la tienda
-            window.location.href = 'pages/tienda.html'; // Ajusta la ruta si es necesario
+            window.location.href = 'pages/tienda.html'; 
         });
     } else {
         console.error('El botón para ver la tienda no se encontró.');
     }
 });
-

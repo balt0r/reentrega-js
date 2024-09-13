@@ -35,6 +35,10 @@ function mostrarProductos(productos) {
     });
 }
 
+document.getElementById('volverInicio').addEventListener('click', () => {
+    window.location.href = '../index.html';
+});
+
 
 function actualizarContadorCarrito() {
     const contadorCarrito = document.getElementById('cantidadProductos');

@@ -49,7 +49,6 @@ p {
     text-align: left;
 }
 
-/* Estilos para la calculadora */
 .calculadora-container {
     display: flex;
     justify-content: center;
@@ -79,8 +78,8 @@ p {
 
 .teclado {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
-    gap: 10px; /* Espacio entre los botones */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
 }
 
 .boton-calculadora {
@@ -102,16 +101,6 @@ p {
 .oculto {
     display: none;
 }
-
-/*#pantalla {
-    grid-column: span 4;
-    padding: 10px;
-    font-size: 1.5em;
-    text-align: right;
-    border: 1px solid #bdc3c7;
-    margin-bottom: 10px;
-}*/
-
 
 #verTienda {
     background-color: #17a2b8;

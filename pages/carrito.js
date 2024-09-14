@@ -35,43 +35,12 @@ function mostrarProductos(productos) {
     });
 }
 
-document.getElementById('volverInicio').addEventListener('click', () => {
-    window.location.href = '../index.html';
-});
-
 function actualizarContadorCarrito() {
     const contadorCarrito = document.getElementById('cantidadProductos');
-    contadorCarrito.innerText = carrito.length;
+    if (contadorCarrito) {
+        contadorCarrito.innerText = carrito.length;
+    }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const checkoutButton = document.getElementById('checkout-button');
-    const personalInfoForm = document.getElementById('personal-info-form');
-    const personalInfoFormElement = document.getElementById('personal-info');
-
-    function showPersonalInfoForm() {
-        personalInfoForm.style.display = 'block';
-    }
-
-    function handleFormSubmit(event) {
-        event.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const address = document.getElementById('address').value;
-
-
-        alert('Compra completada con éxito!');
-        
-        personalInfoForm.style.display = 'none';
-        personalInfoFormElement.reset();
-    }
-
-    checkoutButton.addEventListener('click', showPersonalInfoForm);
-
-    personalInfoFormElement.addEventListener('submit', handleFormSubmit);
-});
-
 
 function agregarAlCarrito(idProducto, productos) {
     const producto = productos.find(p => p.id === idProducto);
@@ -106,7 +75,9 @@ function agregarAlCarrito(idProducto, productos) {
 function calcularTotal() {
     const total = carrito.reduce((acum, producto) => acum + producto.precio * producto.cantidad, 0);
     const contenedorTotal = document.getElementById('total');
-    contenedorTotal.innerHTML = `Total: $${total.toFixed(2)}`;
+    if (contenedorTotal) {
+        contenedorTotal.innerHTML = `Total: $${total.toFixed(2)}`;
+    }
 }
 
 function mostrarCarrito() {
@@ -171,19 +142,72 @@ function vaciarCarrito() {
     calcularTotal();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
     actualizarContadorCarrito(); 
     calcularTotal(); 
     cargarProductos();
     mostrarCarrito(); 
-});
 
-document.getElementById('abrirCarrito').addEventListener('click', () => {
-    document.getElementById('carritoPanel').style.display = 'block';
-});
+    document.getElementById('abrirCarrito').addEventListener('click', () => {
+        document.getElementById('carritoPanel').style.display = 'block';
+    });
 
-document.getElementById('cerrarCarrito').addEventListener('click', () => {
-    document.getElementById('carritoPanel').style.display = 'none';
-});
+    document.getElementById('cerrarCarrito').addEventListener('click', () => {
+        document.getElementById('carritoPanel').style.display = 'none';
+    });
 
-document.getElementById('vaciarCarrito').addEventListener('click', vaciarCarrito);
+    document.getElementById('vaciarCarrito').addEventListener('click', vaciarCarrito);
+
+    const checkoutButton = document.getElementById('checkout-button');
+    const personalInfoForm = document.getElementById('personal-info-form');
+    const personalInfoFormElement = document.getElementById('personal-info');
+
+    function showPersonalInfoForm() {
+        personalInfoForm.style.display = 'block';
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+
+        let productosResumen = carrito.map(producto => `
+            <p>${producto.nombre} - Precio: $${producto.precio} - Cantidad: ${producto.cantidad}</p>
+        `).join('');
+
+        const total = carrito.reduce((acum, producto) => acum + producto.precio * producto.cantidad, 0);
+
+        Swal.fire({
+            title: 'Compra completada con éxito!',
+            html: `
+                <h3>Resumen de la compra:</h3>
+                <p><strong>Nombre:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Dirección:</strong> ${address}</p>
+                <h4>Productos:</h4>
+                ${productosResumen}
+                <h4>Total pagado:</h4>
+                <p>$${total.toFixed(2)}</p>
+            `,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        }).then(() => {
+            vaciarCarrito();
+
+            personalInfoForm.style.display = 'none';
+            personalInfoFormElement.reset();
+        });
+    }
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', showPersonalInfoForm);
+    }
+
+    if (personalInfoFormElement) {
+        personalInfoFormElement.addEventListener('submit', handleFormSubmit);
+    }
+}
+
+init();

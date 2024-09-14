@@ -9,21 +9,23 @@
 <body>
     <h1>Productos Disponibles</h1>
 
-    <div id="productos">
-        
-    </div>
+    <div id="productos"></div>
 
     <div id="contadorCarrito">
         Productos en el carrito: <span id="cantidadProductos">0</span>
     </div>
 
-    <div id="total">
-        Total: $0
+    <div id="carritoPanel" style="display: none;">
+        <h2>Tu Carrito</h2>
+        <div id="carritoProductos">
+        </div>
+        <p id="total">Total: $0</p>
+        <button id="vaciarCarrito" class="boton-vaciar-carrito">Vaciar Carrito</button>
+        <button id="cerrarCarrito" class="boton-cerrar-carrito">Cerrar Carrito</button>
     </div>
 
     <button id="realizarCompra" class="boton-realizar-compra">Realizar Compra</button>
-    <button id="vaciarCarrito" class="boton-vaciar-carrito">Vaciar Carrito</button>
-
+    <button id="abrirCarrito" class="boton-abrir-carrito">Abrir Carrito</button>
     <button id="volverInicio" class="boton">Volver al Inicio</button>
 
     <script src="carrito.js"></script>

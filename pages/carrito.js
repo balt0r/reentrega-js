@@ -35,10 +35,43 @@ function mostrarProductos(productos) {
     });
 }
 
+document.getElementById('volverInicio').addEventListener('click', () => {
+    window.location.href = '../index.html';
+});
+
 function actualizarContadorCarrito() {
     const contadorCarrito = document.getElementById('cantidadProductos');
     contadorCarrito.innerText = carrito.length;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const checkoutButton = document.getElementById('checkout-button');
+    const personalInfoForm = document.getElementById('personal-info-form');
+    const personalInfoFormElement = document.getElementById('personal-info');
+
+    function showPersonalInfoForm() {
+        personalInfoForm.style.display = 'block';
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+
+
+        alert('Compra completada con éxito!');
+        
+        personalInfoForm.style.display = 'none';
+        personalInfoFormElement.reset();
+    }
+
+    checkoutButton.addEventListener('click', showPersonalInfoForm);
+
+    personalInfoFormElement.addEventListener('submit', handleFormSubmit);
+});
+
 
 function agregarAlCarrito(idProducto, productos) {
     const producto = productos.find(p => p.id === idProducto);

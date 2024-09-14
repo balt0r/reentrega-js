@@ -24,9 +24,24 @@
         <button id="cerrarCarrito" class="boton-cerrar-carrito">Cerrar Carrito</button>
     </div>
 
-    <button id="realizarCompra" class="boton-realizar-compra">Realizar Compra</button>
+    <!--<button id="realizarCompra" class="boton-realizar-compra">Realizar Compra</button> -->
     <button id="abrirCarrito" class="boton-abrir-carrito">Abrir Carrito</button>
+    <button id="checkout-button">Realizar Compra</button>
     <button id="volverInicio" class="boton">Volver al Inicio</button>
+    <div id="personal-info-form" style="display: none;">
+        <form id="personal-info">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" required>
+            
+            <button type="submit">Completar Compra</button>
+        </form>
+    </div>
 
     <script src="carrito.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

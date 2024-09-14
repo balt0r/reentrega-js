@@ -35,6 +35,10 @@ function mostrarProductos(productos) {
     });
 }
 
+document.getElementById('volverInicio').addEventListener('click', () => {
+    window.location.href = '../index.html';
+});
+
 function actualizarContadorCarrito() {
     const contadorCarrito = document.getElementById('cantidadProductos');
     if (contadorCarrito) {
@@ -53,6 +57,7 @@ function agregarAlCarrito(idProducto, productos) {
         }
 
         localStorage.setItem('carrito', JSON.stringify(carrito));
+        mostrarCarrito(); 
         actualizarContadorCarrito(); 
         calcularTotal(); 
         Swal.fire({
@@ -143,10 +148,10 @@ function vaciarCarrito() {
 }
 
 function init() {
-    actualizarContadorCarrito(); 
-    calcularTotal(); 
     cargarProductos();
     mostrarCarrito(); 
+    actualizarContadorCarrito(); 
+    calcularTotal(); 
 
     document.getElementById('abrirCarrito').addEventListener('click', () => {
         document.getElementById('carritoPanel').style.display = 'block';
@@ -160,7 +165,6 @@ function init() {
 
     const checkoutButton = document.getElementById('checkout-button');
     const personalInfoForm = document.getElementById('personal-info-form');
-    const personalInfoFormElement = document.getElementById('personal-info');
 
     function showPersonalInfoForm() {
         personalInfoForm.style.display = 'block';
@@ -195,9 +199,8 @@ function init() {
             confirmButtonText: 'Aceptar'
         }).then(() => {
             vaciarCarrito();
-
             personalInfoForm.style.display = 'none';
-            personalInfoFormElement.reset();
+            personalInfoForm.reset();
         });
     }
 
@@ -205,9 +208,11 @@ function init() {
         checkoutButton.addEventListener('click', showPersonalInfoForm);
     }
 
-    if (personalInfoFormElement) {
-        personalInfoFormElement.addEventListener('submit', handleFormSubmit);
-    }
+    if (personalInfoForm) {
+        personalInfoForm.addEventListener('submit', handleFormSubmit);
+    }    
 }
+
+
 
 init();

@@ -3,7 +3,7 @@
         "id": 1,
         "nombre": "Guitarra",
         "precio": 100,
-        "imagen": "/images/guitarra.jpg"
+        "imagen": "images/guitarra.jpg"
     },
     {
         "id": 2,
